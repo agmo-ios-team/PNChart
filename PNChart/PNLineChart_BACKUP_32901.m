@@ -197,8 +197,13 @@
         for (NSUInteger index = 0; index < xLabels.count; index++) {
             labelText = xLabels[index];
 
+<<<<<<< HEAD
             NSInteger x = (index * _xLabelWidth + _chartMarginLeft + _xLabelWidth / 2.0) - 10;
             NSInteger y = _chartMarginBottom + _chartCavanHeight;
+=======
+            NSInteger x = (NSInteger) (index * _xLabelWidth + _chartMarginLeft);
+            NSInteger y = (NSInteger) (_chartMarginBottom + _chartCavanHeight);
+>>>>>>> 75e54fe69609f3c2e446e6d8ff995977a273098a
 
             PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(x, y, (NSInteger) _xLabelWidth, (NSInteger) _chartMarginBottom)];
             [label setTextAlignment:NSTextAlignmentLeft];
@@ -627,6 +632,7 @@ andProgressLinePathsColors:(NSMutableArray *)progressLinePathsColors {
 }
 
 
+<<<<<<< HEAD
         for (PNLineChartData *chartData in data) {
             // create as many chart line layers as there are data-lines
             CAShapeLayer *chartLine = [CAShapeLayer layer];
@@ -647,6 +653,12 @@ andProgressLinePathsColors:(NSMutableArray *)progressLinePathsColors {
             pointLayer.lineWidth = chartData.lineWidth;
             [self.layer addSublayer:pointLayer];
             [self.chartPointArray addObject:pointLayer];
+=======
+- (void)removeLayers {
+    for (NSArray<CALayer *> *layers in self.chartLineArray) {
+        for (CALayer *layer in layers) {
+            [layer removeFromSuperlayer];
+>>>>>>> 75e54fe69609f3c2e446e6d8ff995977a273098a
         }
     }
     for (CALayer *layer in self.chartPointArray) {
@@ -1289,8 +1301,14 @@ andProgressLinePathsColors:(NSMutableArray *)progressLinePathsColors {
     CATextLayer *textLayer = [[CATextLayer alloc] init];
     [textLayer setAlignmentMode:kCAAlignmentCenter];
     [textLayer setForegroundColor:[chartData.pointLabelColor CGColor]];
+<<<<<<< HEAD
     [textLayer setBackgroundColor:[[[UIColor whiteColor] colorWithAlphaComponent:0.0] CGColor]];
     [textLayer setCornerRadius:textLayer.fontSize / 8.0];
+=======
+    [textLayer setBackgroundColor:self.backgroundColor.CGColor];
+//    [textLayer setBackgroundColor:[self.backgroundColor colorWithAlphaComponent:0.8].CGColor];
+//    [textLayer setCornerRadius:(CGFloat) (textLayer.fontSize / 8.0)];
+>>>>>>> 75e54fe69609f3c2e446e6d8ff995977a273098a
 
     if (chartData.pointLabelFont != nil) {
         [textLayer setFont:(__bridge CFTypeRef) (chartData.pointLabelFont)];
