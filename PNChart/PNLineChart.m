@@ -193,11 +193,11 @@
         for (int index = 0; index < xLabels.count; index++) {
             labelText = xLabels[index];
 
-            NSInteger x = (index * _xLabelWidth + _chartMarginLeft + _xLabelWidth / 2.0);
+            NSInteger x = (index * _xLabelWidth + _chartMarginLeft + _xLabelWidth / 2.0) - 10;
             NSInteger y = _chartMarginBottom + _chartCavanHeight;
 
             PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(x, y, (NSInteger) _xLabelWidth, (NSInteger) _chartMarginBottom)];
-            [label setTextAlignment:NSTextAlignmentCenter];
+            [label setTextAlignment:NSTextAlignmentLeft];
             label.text = labelText;
             [self setCustomStyleForXLabel:label];
             [self addSubview:label];
@@ -545,7 +545,7 @@
             CAShapeLayer *chartLine = [CAShapeLayer layer];
             chartLine.lineCap = kCALineCapButt;
             chartLine.lineJoin = kCALineJoinMiter;
-            chartLine.fillColor = [[UIColor whiteColor] CGColor];
+            chartLine.fillColor = [[UIColor clearColor] CGColor];
             chartLine.lineWidth = chartData.lineWidth;
             chartLine.strokeEnd = 0.0;
             [self.layer addSublayer:chartLine];
@@ -1030,7 +1030,7 @@
     CATextLayer *textLayer = [[CATextLayer alloc] init];
     [textLayer setAlignmentMode:kCAAlignmentCenter];
     [textLayer setForegroundColor:[chartData.pointLabelColor CGColor]];
-    [textLayer setBackgroundColor:[[[UIColor whiteColor] colorWithAlphaComponent:0.8] CGColor]];
+    [textLayer setBackgroundColor:[[[UIColor whiteColor] colorWithAlphaComponent:0.0] CGColor]];
     [textLayer setCornerRadius:textLayer.fontSize / 8.0];
 
     if (chartData.pointLabelFont != nil) {
